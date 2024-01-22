@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MarketSpecificComponents</string>
+
+    <string name="title">I love to eat EVERYTHING</string>
+    <string name="title_us">I love to eat HAMBURGERS</string>
+    <string name="title_it">I love to eat PIZZA</string>
+    <string name="title_mx">I love to eat TACOS</string>
+    <string name="title_pl">I love to eat PIEROGI</string>
+</resources>
