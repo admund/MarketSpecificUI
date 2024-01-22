@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.material3)
 
     implementation(project(":marketspecificui"))
+    implementation(project(":samplelib"))
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

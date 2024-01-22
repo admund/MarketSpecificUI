@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MarketSpecificSample</string>
 
+    <!-- random comment -->
     <string name="title">I love to eat EVERYTHING</string>
     <string name="title_us">I love to eat HAMBURGERS</string>
     <string name="title_it">I love to eat PIZZA</string>

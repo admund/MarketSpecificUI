@@ -5,4 +5,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.androidLibrary) apply false
 }
+
+apply<me.admund.marketspecifcui.plugin.MarketSpecificUiPlugin>()
+
 true // Needed to make the Suppress annotation work for the plugins block
