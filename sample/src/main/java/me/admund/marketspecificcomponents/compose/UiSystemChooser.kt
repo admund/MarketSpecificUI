@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import me.admund.marketspecificcomponents.compose.theme.MarketSpecificComponentsTheme
-import me.admund.marketspecificui.MarketSpecificResolver
+import me.admund.marketspecificui.MarketSpecificLib
 
 @Composable
 fun UiSystemChooser(
@@ -77,7 +77,7 @@ fun UiSystemChooser(
 }
 
 private fun changeMarket(marketSuffix: String) {
-    MarketSpecificResolver.setMarketSuffix(marketSuffix)
+    MarketSpecificLib.setMarketSuffix(marketSuffix)
 }
 
 @Preview(showBackground = true)
