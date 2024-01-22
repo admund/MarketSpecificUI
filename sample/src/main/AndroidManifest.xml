@@ -23,10 +23,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ComposeActivity"
+            android:name=".compose.ComposeActivity"
             android:theme="@style/Theme.MarketSpecificComponents" />
         <activity
-            android:name=".ViewsActivity"
+            android:name=".views.ViewsActivity"
             android:theme="@style/Theme.MarketSpecificComponents" />
     </application>
 

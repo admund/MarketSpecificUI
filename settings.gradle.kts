@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MarketSpecificComponents"
-include(":app")
+include(":sample")
 include(":marketspecificui")

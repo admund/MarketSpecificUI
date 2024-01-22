@@ -1,4 +1,4 @@
-package me.admund.marketspecificcomponents.ui.theme
+package me.admund.marketspecificcomponents.compose.theme
 
 import androidx.compose.ui.graphics.Color
 

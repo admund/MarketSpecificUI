@@ -1,4 +1,4 @@
-package me.admund.marketspecificcomponents.ui
+package me.admund.marketspecificcomponents.compose
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,7 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import me.admund.marketspecificcomponents.ui.theme.MarketSpecificComponentsTheme
+import me.admund.marketspecificcomponents.compose.theme.MarketSpecificComponentsTheme
 import me.admund.marketspecificui.MarketSpecificResolver
 
 @Composable

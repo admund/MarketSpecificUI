@@ -1,20 +1,13 @@
-package me.admund.marketspecificcomponents
+package me.admund.marketspecificcomponents.views
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.material3.Text
-import me.admund.marketspecificcomponents.ui.theme.MarketSpecificComponentsTheme
+import me.admund.marketspecificcomponents.R
 
 class ViewsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContent {
-            MarketSpecificComponentsTheme {
-                Text(text = "Views")
-            }
-        }
+        setContentView(R.layout.activity_views)
     }
 }
