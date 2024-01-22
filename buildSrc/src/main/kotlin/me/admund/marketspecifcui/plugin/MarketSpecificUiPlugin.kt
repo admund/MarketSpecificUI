@@ -10,6 +10,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         project.task("buildResData") {
+            // TODO add as params
             val suffixList = listOf("us", "it", "mx", "pl")
 
             println("Project name: ${project.name}")
@@ -86,21 +87,6 @@ class MarketSpecificUiPlugin : Plugin<Project> {
         }
         return result
     }
-
-//    private fun printClass(project: Project, result: Map<String, Map<String, String>>) {
-//        var resulString = "package ${project.name}\n\n" +
-//                "import me.admund.marketspecificui.ResData\n\n" +
-//                "val ${project.name}ResData: ResData = mapOf(\n"
-//        result.entries.onEach { entry ->
-//            resulString += "\tR.string.${entry.key} to mapOf(\n"
-//            entry.value.onEach { entry2 ->
-//                resulString += "\t\t\"${entry2.key}\" to R.string.${entry2.value},\n"
-//            }
-//            resulString += "\t),\n"
-//        }
-//        resulString += ")\n\n"
-//        println("Resul String:\n\n$resulString")
-//    }
 
     private fun printClass(project: Project, result: Map<String, Map<String, String>>) {
         var resulString = //"package ${project.name}\n\n" +
