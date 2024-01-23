@@ -1,4 +1,4 @@
-package me.admund.marketspecificcomponents.compose
+package me.admund.marketspecificui.sample.compose
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,10 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import me.admund.marketspecificcomponents.R
-import me.admund.marketspecificcomponents.compose.theme.MarketSpecificComponentsTheme
+import me.admund.marketspecificui.R
 import me.admund.marketspecificui.compose.marketSpecificPainterResource
 import me.admund.marketspecificui.compose.marketSpecificStringResource
+import me.admund.marketspecificui.sample.compose.theme.MarketSpecificComponentsTheme
 
 class ComposeActivity : ComponentActivity() {
 

@@ -1,4 +1,4 @@
-package me.admund.marketspecificcomponents.compose.theme
+package me.admund.marketspecificui.sample.compose.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

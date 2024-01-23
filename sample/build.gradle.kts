@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "me.admund.marketspecificcomponents"
+    namespace = "me.admund.marketspecificui.sample"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "me.admund.marketspecificcomponents"
+        applicationId = "me.admund.marketspecificui.sample"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,8 +1,8 @@
-package me.admund.marketspecificcomponents.views
+package me.admund.marketspecificui.sample.views
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import me.admund.marketspecificcomponents.R
+import me.admund.marketspecificui.R
 
 class ViewsActivity : ComponentActivity() {
 

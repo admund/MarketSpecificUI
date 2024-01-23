@@ -1,4 +1,4 @@
-package me.admund.marketspecificcomponents.compose.theme
+package me.admund.marketspecificui.sample.compose.theme
 
 import android.app.Activity
 import android.os.Build
