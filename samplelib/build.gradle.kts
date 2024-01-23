@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "me.admund.samplelib"
+    namespace = "me.admund.marketspecificui.samplelib"
     compileSdk = 34
 
     defaultConfig {
