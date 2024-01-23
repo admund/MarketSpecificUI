@@ -13,7 +13,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MarketSpecificComponents"
-include(":sample")
+rootProject.name = "MarketSpecificUi"
 include(":marketspecificui")
+include(":plugin")
+include(":sample")
 include(":samplelib")

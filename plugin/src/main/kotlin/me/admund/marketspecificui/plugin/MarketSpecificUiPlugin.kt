@@ -4,6 +4,7 @@ import groovy.util.Node
 import groovy.xml.XmlParser
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.tasks.util.PatternFilterable
 import org.gradle.api.file.ConfigurableFileTree
 import org.gradle.api.provider.ListProperty
 import java.io.File
@@ -51,7 +52,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
 
             // PARSE strings.xml
             subProject.fileTree(subProject.projectDir).matching {
-                include("**/*strings.xml")
+                this.include(listOf("**/*strings.xml"))
             }.onEach { file ->
                 val fileResult = parseStringsFile(
                     packageName = packageName,
@@ -73,6 +74,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
 
     private fun parsePackageName(projectBuildGradle: File): String {
         val text = projectBuildGradle.readText()
+        // TODO handle groovy version without "="
         return "namespace = \"[a-zA-Z.]*".toRegex()
             .find(text)?.value?.replace("namespace = \"", "") ?: ""
     }
@@ -112,7 +114,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
 
         suffixList.onEach { suffix ->
             drawableDir.matching {
-                include("*_$suffix*")
+                this.include(listOf("*_$suffix*"))
             }.onEach { file ->
                 val suffixAndFileExtension = file.name.split("_").lastOrNull() ?: ""
                 val defaultFileName = file.name.replace("_$suffixAndFileExtension", "")

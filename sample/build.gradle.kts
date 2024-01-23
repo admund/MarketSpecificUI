@@ -69,4 +69,4 @@ dependencies {
 }
 
 // TODO think to which task will be best to append it
-project.tasks["build"].dependsOn(":buildResData")
+project.tasks["build"].dependsOn(":buildMarketSpecificResData")
