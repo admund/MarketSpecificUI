@@ -4,9 +4,9 @@ plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.androidLibrary) apply false
+    id("me.admund.marketspecificui") version ("0.1.2")
 }
 
-apply<me.admund.marketspecificui.plugin.MarketSpecificUiPlugin>()
 configure<me.admund.marketspecificui.plugin.MarketSpecificUiPluginExtension> {
     suffixList.set(listOf("us", "it", "mx", "pl", "tr"))
 }

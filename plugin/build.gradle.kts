@@ -22,5 +22,11 @@ gradlePlugin {
     }
 }
 
+publishing {
+    repositories {
+        mavenLocal()
+    }
+}
+
 dependencies {
 }
