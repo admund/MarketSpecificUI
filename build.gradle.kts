@@ -7,5 +7,8 @@ plugins {
 }
 
 apply<me.admund.marketspecifcui.plugin.MarketSpecificUiPlugin>()
+configure<me.admund.marketspecifcui.plugin.MarketSpecificUiPluginExtension> {
+    suffixList.set(listOf("us", "it", "mx", "pl", "tr"))
+}
 
 true // Needed to make the Suppress annotation work for the plugins block

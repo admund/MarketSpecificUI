@@ -4,29 +4,37 @@ import groovy.util.Node
 import groovy.xml.XmlParser
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.file.ConfigurableFileTree
+import org.gradle.api.provider.ListProperty
 import java.io.File
+
+interface MarketSpecificUiPluginExtension {
+    val suffixList: ListProperty<String>
+}
 
 class MarketSpecificUiPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
-        project.task("buildResData") {
-            // TODO add as params
-            val suffixList = listOf("us", "it", "mx", "pl")
+        val extension = project.extensions.create(
+            "marketspecific_extension",
+            MarketSpecificUiPluginExtension::class.java
+        )
 
-            println("Project name: ${project.name}")
+        project.tasks.register("buildResData") {
+            println("Project name: ${project.name}\n")
             val result = mutableMapOf<String, MutableMap<String, String>>()
 
             project.childProjects.values.onEach { subProject ->
                 parseSubProject(
                     subProject = subProject,
-                    suffixList = suffixList,
+                    suffixList = extension.suffixList.get(),
                     result = result
                 )
             }
 
             printClass(project = project, result = result)
 
-            println("DONE!!!")
+            println("Building MarketSpecificResData was a Great Success!")
         }
     }
 
@@ -35,12 +43,11 @@ class MarketSpecificUiPlugin : Plugin<Project> {
         suffixList: List<String>,
         result: MutableMap<String, MutableMap<String, String>>
     ) {
-        println("\nSub project name: ${subProject.name}")
         // TODO handle Groovy "build.gradle"
         val buildGradleFile = subProject.file("build.gradle.kts")
         if (buildGradleFile.exists()) {
             val packageName = parsePackageName(buildGradleFile)
-            println("Sub project package name: $packageName")
+            println("Sub project name: ${subProject.name} and package name: $packageName")
 
             // PARSE strings.xml
             subProject.fileTree(subProject.projectDir).matching {
@@ -53,6 +60,14 @@ class MarketSpecificUiPlugin : Plugin<Project> {
                 )
                 result.putAll(fileResult)
             }
+
+            // PARSE drawable dir
+            val drawableDirResult = parseDrawableDir(
+                packageName = packageName,
+                drawableDir = subProject.fileTree("src/main/res/drawable"),
+                suffixList = suffixList
+            )
+            result.putAll(drawableDirResult)
         }
     }
 
@@ -88,6 +103,31 @@ class MarketSpecificUiPlugin : Plugin<Project> {
         return result
     }
 
+    private fun parseDrawableDir(
+        packageName: String,
+        drawableDir: ConfigurableFileTree,
+        suffixList: List<String>
+    ): Map<String, MutableMap<String, String>> {
+        val result = mutableMapOf<String, MutableMap<String, String>>()
+
+        suffixList.onEach { suffix ->
+            drawableDir.matching {
+                include("*_$suffix*")
+            }.onEach { file ->
+                val suffixAndFileExtension = file.name.split("_").lastOrNull() ?: ""
+                val defaultFileName = file.name.replace("_$suffixAndFileExtension", "")
+                val map = result["$packageName.R.drawable.$defaultFileName"] ?: run {
+                    val newMap = mutableMapOf<String, String>()
+                    result["$packageName.R.drawable.$defaultFileName"] = newMap
+                    newMap
+                }
+                map[suffix] = "$packageName.R.drawable.${defaultFileName}_$suffix"
+            }
+        }
+
+        return result
+    }
+
     private fun printClass(project: Project, result: Map<String, Map<String, String>>) {
         var resulString = //"package ${project.name}\n\n" +
             "import me.admund.marketspecificui.ResData\n\n" +
@@ -99,7 +139,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
             }
             resulString += "\t),\n"
         }
-        resulString += ")\n\n"
-        println("Result class:\n\n$resulString")
+        resulString += ")\n"
+        println("\n\nResult class:\n\n$resulString")
     }
 }
