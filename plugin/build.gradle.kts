@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.admund"
-version = "0.1.0"
+version = "0.1.1"
 
 gradlePlugin {
     website = "https://github.com/admund/MarketSpecificUI"
