@@ -21,7 +21,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
             MarketSpecificUiPluginExtension::class.java
         )
 
-        project.tasks.register("buildMarketSpecificResData") {
+        project.tasks.register("buildMarketSpecificUiResData") {
             println("Project name: ${project.name}\n")
             val result = mutableMapOf<String, MutableMap<String, String>>()
 
