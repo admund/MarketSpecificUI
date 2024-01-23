@@ -67,3 +67,6 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 }
+
+// TODO think to which task will be best to append it
+project.tasks["build"].dependsOn(":buildResData")
