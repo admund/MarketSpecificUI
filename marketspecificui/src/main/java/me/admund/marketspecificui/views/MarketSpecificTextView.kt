@@ -5,13 +5,13 @@ import android.util.AttributeSet
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.withStyledAttributes
-import me.admund.marketspecificui.MarketSpecificLib
+import me.admund.marketspecificui.MarketSpecificUiLib
 import me.admund.marketspecificui.R
 
 class MarketSpecificTextView(context: Context, attrs: AttributeSet?) :
     AppCompatTextView(context, attrs) {
 
-    private val resolver = MarketSpecificLib
+    private val resolver = MarketSpecificUiLib
 
     init {
         context.withStyledAttributes(

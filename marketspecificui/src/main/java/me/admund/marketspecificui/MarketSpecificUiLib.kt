@@ -2,7 +2,7 @@ package me.admund.marketspecificui
 
 typealias ResData = Map<Int, Map<String, Int>>
 
-object MarketSpecificLib {
+object MarketSpecificUiLib {
 
     private var _marketSuffix: String? = null
     private var _resData = mutableMapOf<Int, Map<String, Int>>()

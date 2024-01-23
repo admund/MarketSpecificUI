@@ -5,13 +5,13 @@ import android.util.AttributeSet
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.withStyledAttributes
-import me.admund.marketspecificui.MarketSpecificLib
+import me.admund.marketspecificui.MarketSpecificUiLib
 import me.admund.marketspecificui.R
 
 class MarketSpecificImageView(context: Context, attrs: AttributeSet?) :
     AppCompatImageView(context, attrs) {
 
-    private val resolver = MarketSpecificLib
+    private val resolver = MarketSpecificUiLib
 
     init {
         context.withStyledAttributes(set = attrs, attrs = R.styleable.MarketSpecificView) {

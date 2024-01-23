@@ -6,16 +6,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import me.admund.marketspecificui.MarketSpecificLib
+import me.admund.marketspecificui.MarketSpecificUiLib
 
 @Composable
 fun marketSpecificStringResource(@StringRes id: Int): String {
-    val specificId = MarketSpecificLib.provideMarketSpecificRes(id)
+    val specificId = MarketSpecificUiLib.provideMarketSpecificRes(id)
     return stringResource(id = specificId)
 }
 
 @Composable
 fun marketSpecificPainterResource(@DrawableRes id: Int): Painter {
-    val specificId = MarketSpecificLib.provideMarketSpecificRes(id)
+    val specificId = MarketSpecificUiLib.provideMarketSpecificRes(id)
     return painterResource(id = specificId)
 }
