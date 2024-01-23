@@ -1,4 +1,4 @@
-package me.admund.marketspecifcui.plugin
+package me.admund.marketspecificui.plugin
 
 import groovy.util.Node
 import groovy.xml.XmlParser

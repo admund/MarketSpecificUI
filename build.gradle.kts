@@ -6,8 +6,8 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
 }
 
-apply<me.admund.marketspecifcui.plugin.MarketSpecificUiPlugin>()
-configure<me.admund.marketspecifcui.plugin.MarketSpecificUiPluginExtension> {
+apply<me.admund.marketspecificui.plugin.MarketSpecificUiPlugin>()
+configure<me.admund.marketspecificui.plugin.MarketSpecificUiPluginExtension> {
     suffixList.set(listOf("us", "it", "mx", "pl", "tr"))
 }
 
