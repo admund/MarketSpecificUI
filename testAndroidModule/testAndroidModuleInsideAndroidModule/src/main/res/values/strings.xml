@@ -1,15 +1,15 @@
 <resources>
     <!-- random comment -->
-    <string name="module_title">placeholder</string>
-    <string name="module_title_us">placeholder</string>
-    <string name="module_title_it">placeholder</string>
-    <string name="module_title_mx">placeholder</string>
-    <string name="module_title_pl">placeholder</string>
+    <string name="test_android_module_inside_android_module_title">placeholder</string>
+    <string name="test_android_module_inside_android_module_title_us">placeholder</string>
+    <string name="test_android_module_inside_android_module_title_it">placeholder</string>
+    <string name="test_android_module_inside_android_module_title_mx">placeholder</string>
+    <string name="test_android_module_inside_android_module_title_pl">placeholder</string>
 
     <!-- not all -->
-    <string name="module_not_all">placeholder</string>
-    <string name="module_not_all_us">placeholder</string>
-    <string name="module_not_all_mx">placeholder</string>
+    <string name="test_android_module_inside_android_module_not_all">placeholder</string>
+    <string name="test_android_module_inside_android_module_not_all_us">placeholder</string>
+    <string name="test_android_module_inside_android_module_not_all_mx">placeholder</string>
 
-    <string name="test_sample_module_should_not_be_consider_us_tadada">placeholder</string>
+    <string name="test_android_module_inside_android_module_should_not_be_consider_us_tadada">placeholder</string>
 </resources>
