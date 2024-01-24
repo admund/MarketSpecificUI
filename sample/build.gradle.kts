@@ -62,7 +62,7 @@ dependencies {
     implementation(libs.material3)
 
     implementation(project(":marketspecificui"))
-    implementation(project(":samplelib"))
+    implementation(project(":testAndroidModule"))
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

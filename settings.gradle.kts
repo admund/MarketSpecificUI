@@ -18,4 +18,7 @@ rootProject.name = "MarketSpecificUi"
 include(":marketspecificui")
 include(":plugin")
 include(":sample")
-include(":samplelib")
+include(":testAndroidModule")
+include(":testJavaModule")
+include(":testJavaModule:testAndroidModuleInsideJavaModule")
+include(":testAndroidModule:testAndroidModuleInsideAndroidModule")
