@@ -4,7 +4,6 @@ import groovy.util.Node
 import groovy.xml.XmlParser
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.tasks.util.PatternFilterable
 import org.gradle.api.file.ConfigurableFileTree
 import org.gradle.api.provider.ListProperty
 import java.io.File
@@ -142,9 +141,9 @@ class MarketSpecificUiPlugin : Plugin<Project> {
     }
 
     private fun printClass(project: Project, result: Map<String, Map<String, String>>) {
-        var resulString = //"package ${project.name}\n\n" +
-            "import me.admund.marketspecificui.ResData\n\n" +
-                    "val ${project.name.replace(" ", "")}ResData: ResData = mapOf(\n"
+        val trimmedProjectName = project.name.trim().replace(" ", "")
+        var resulString = "import me.admund.marketspecificui.ResData\n\n" +
+                "val ${trimmedProjectName}ResData: ResData = mapOf(\n"
         result.entries.onEach { entry ->
             resulString += "\t${entry.key} to mapOf(\n"
             entry.value.onEach { entry2 ->
