@@ -10,6 +10,7 @@ plugins {
 
 configure<me.admund.marketspecificui.plugin.MarketSpecificUiPluginExtension> {
     suffixList.set(listOf("us", "it", "mx", "pl", "tr"))
+    resultResDataClassDestinationPath.set("sample/src/main/java")
 }
 
 true // Needed to make the Suppress annotation work for the plugins block

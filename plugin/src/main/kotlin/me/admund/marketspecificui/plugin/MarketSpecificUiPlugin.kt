@@ -6,17 +6,19 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.file.ConfigurableFileTree
 import org.gradle.api.provider.ListProperty
+import org.gradle.api.provider.Property
 import java.io.File
 
 interface MarketSpecificUiPluginExtension {
     val suffixList: ListProperty<String>
+    val resultResDataClassDestinationPath: Property<String>
 }
 
 class MarketSpecificUiPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         val extension = project.extensions.create(
-            "marketspecific_extension",
+            "market_specific_ui_extension",
             MarketSpecificUiPluginExtension::class.java
         )
 
@@ -32,7 +34,11 @@ class MarketSpecificUiPlugin : Plugin<Project> {
                 )
             }
 
-            printClass(project = project, result = result)
+            printClass(
+                project = project,
+                destinationPath = extension.resultResDataClassDestinationPath.get(),
+                result = result
+            )
 
             println("Building MarketSpecificResData was a Great Success!")
         }
@@ -140,18 +146,46 @@ class MarketSpecificUiPlugin : Plugin<Project> {
         return result
     }
 
-    private fun printClass(project: Project, result: Map<String, Map<String, String>>) {
+    private fun printClass(
+        project: Project,
+        destinationPath: String,
+        result: Map<String, Map<String, String>>
+    ) {
         val trimmedProjectName = project.name.trim().replace(" ", "")
-        var resulString = "import me.admund.marketspecificui.ResData\n\n" +
+        var resultString = "import me.admund.marketspecificui.ResData\n\n" +
                 "val ${trimmedProjectName}ResData: ResData = mapOf(\n"
         result.entries.onEach { entry ->
-            resulString += "\t${entry.key} to mapOf(\n"
+            resultString += "\t${entry.key} to mapOf(\n"
             entry.value.onEach { entry2 ->
-                resulString += "\t\t\"${entry2.key}\" to ${entry2.value},\n"
+                resultString += "\t\t\"${entry2.key}\" to ${entry2.value},\n"
             }
-            resulString += "\t),\n"
+            resultString += "\t),\n"
         }
-        resulString += ")\n"
-        println("\n\nResult class:\n\n$resulString")
+        resultString += ")\n"
+        println("\n\nResult class:\n\n$resultString")
+
+        createClassFile(
+            project = project,
+            destinationPath = destinationPath,
+            trimmedProjectName = trimmedProjectName,
+            resultString = resultString
+        )
+    }
+
+    private fun createClassFile(
+        project: Project,
+        destinationPath: String,
+        trimmedProjectName: String,
+        resultString: String
+    ) {
+        val resDataFileName = "${trimmedProjectName}ResData.kt"
+        val checkedDestinationPath = destinationPath +
+                if (!destinationPath.endsWith("/")) "/" else ""
+        val resDataFile = project.file("$checkedDestinationPath$resDataFileName")
+        if (resDataFile.exists()) {
+            println("Removing $resDataFileName result: ${resDataFile.delete()}")
+        }
+        println("Creating $resDataFileName result: ${resDataFile.createNewFile()}")
+        resDataFile.writeText(resultString)
     }
 }
