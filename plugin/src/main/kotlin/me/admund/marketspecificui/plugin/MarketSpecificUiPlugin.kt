@@ -162,7 +162,6 @@ class MarketSpecificUiPlugin : Plugin<Project> {
             resultString += "\t),\n"
         }
         resultString += ")\n"
-        println("\n\nResult class:\n\n$resultString")
 
         createClassFile(
             project = project,
