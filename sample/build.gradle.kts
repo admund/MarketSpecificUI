@@ -63,6 +63,9 @@ dependencies {
 
     implementation(project(":marketspecificui"))
     implementation(project(":testAndroidModule"))
+    implementation(project(":testAndroidModule:testAndroidModuleInsideAndroidModule"))
+    implementation(project(":testJavaModule"))
+    implementation(project(":testJavaModule:testAndroidModuleInsideJavaModule"))
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

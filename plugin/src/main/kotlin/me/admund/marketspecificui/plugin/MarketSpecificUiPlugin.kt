@@ -44,6 +44,14 @@ class MarketSpecificUiPlugin : Plugin<Project> {
         suffixList: List<String>,
         result: MutableMap<String, MutableMap<String, String>>
     ) {
+        subProject.childProjects.values.onEach {
+            parseSubProject(
+                subProject = it,
+                suffixList = suffixList,
+                result = result
+            )
+        }
+
         // TODO handle Groovy "build.gradle"
         val buildGradleFile = subProject.file("build.gradle.kts")
         if (buildGradleFile.exists()) {
@@ -51,7 +59,8 @@ class MarketSpecificUiPlugin : Plugin<Project> {
             println("Sub project name: ${subProject.name} and package name: $packageName")
 
             // PARSE strings.xml
-            subProject.fileTree(subProject.projectDir).matching {
+            val projectSrcPath = subProject.projectDir.path + "/src"
+            subProject.fileTree(projectSrcPath).matching {
                 this.include(listOf("**/*strings.xml"))
             }.onEach { file ->
                 val fileResult = parseStringsFile(
