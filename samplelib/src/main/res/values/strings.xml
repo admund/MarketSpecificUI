@@ -1,13 +1,15 @@
 <resources>
     <!-- random comment -->
-    <string name="module_title">MODULE I love to eat EVERYTHING</string>
-    <string name="module_title_us">MODULE I love to eat HAMBURGERS</string>
-    <string name="module_title_it">MODULE I love to eat PIZZA</string>
-    <string name="module_title_mx">MODULE I love to eat TACOS</string>
-    <string name="module_title_pl">MODULE I love to eat PIEROGI</string>
+    <string name="module_title">placeholder</string>
+    <string name="module_title_us">placeholder</string>
+    <string name="module_title_it">placeholder</string>
+    <string name="module_title_mx">placeholder</string>
+    <string name="module_title_pl">placeholder</string>
 
     <!-- not all -->
-    <string name="module_not_all">NOT ALL</string>
-    <string name="module_not_all_us">NOT ALL US</string>
-    <string name="module_not_all_mx">NOT ALL MX</string>
+    <string name="module_not_all">placeholder</string>
+    <string name="module_not_all_us">placeholder</string>
+    <string name="module_not_all_mx">placeholder</string>
+
+    <string name="test_sample_module_should_not_be_consider_us_tadada">placeholder</string>
 </resources>

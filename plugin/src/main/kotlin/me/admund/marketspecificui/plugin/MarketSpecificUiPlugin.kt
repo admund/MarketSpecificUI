@@ -90,7 +90,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
             if (children is Node && children.name().equals("string")) {
                 val stringName = children.attributes()["name"] as String
                 suffixList.onEach { suffix ->
-                    if (stringName.contains("_$suffix")) {
+                    if (stringName.endsWith("_$suffix")) {
                         val defaultStringName = stringName.replace("_$suffix", "")
                         val map = result["$packageName.R.string.$defaultStringName"] ?: run {
                             val newMap = mutableMapOf<String, String>()
@@ -116,14 +116,16 @@ class MarketSpecificUiPlugin : Plugin<Project> {
             drawableDir.matching {
                 this.include(listOf("*_$suffix*"))
             }.onEach { file ->
-                val suffixAndFileExtension = file.name.split("_").lastOrNull() ?: ""
-                val defaultFileName = file.name.replace("_$suffixAndFileExtension", "")
-                val map = result["$packageName.R.drawable.$defaultFileName"] ?: run {
-                    val newMap = mutableMapOf<String, String>()
-                    result["$packageName.R.drawable.$defaultFileName"] = newMap
-                    newMap
+                val rawFileName = file.name.split(".").first()
+                if (rawFileName.endsWith("_$suffix")) {
+                    val defaultStringName = rawFileName.replace("_$suffix", "")
+                    val map = result["$packageName.R.drawable.$defaultStringName"] ?: run {
+                        val newMap = mutableMapOf<String, String>()
+                        result["$packageName.R.drawable.$defaultStringName"] = newMap
+                        newMap
+                    }
+                    map[suffix] = "$packageName.R.drawable.$rawFileName"
                 }
-                map[suffix] = "$packageName.R.drawable.${defaultFileName}_$suffix"
             }
         }
 
@@ -133,7 +135,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
     private fun printClass(project: Project, result: Map<String, Map<String, String>>) {
         var resulString = //"package ${project.name}\n\n" +
             "import me.admund.marketspecificui.ResData\n\n" +
-                    "val ${project.name}ResData: ResData = mapOf(\n"
+                    "val ${project.name.replace(" ", "")}ResData: ResData = mapOf(\n"
         result.entries.onEach { entry ->
             resulString += "\t${entry.key} to mapOf(\n"
             entry.value.onEach { entry2 ->
