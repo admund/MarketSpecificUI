@@ -11,8 +11,6 @@ import me.admund.marketspecificui.R
 class MarketSpecificImageView(context: Context, attrs: AttributeSet?) :
     AppCompatImageView(context, attrs) {
 
-    private val resolver = MarketSpecificUiLib
-
     init {
         context.withStyledAttributes(set = attrs, attrs = R.styleable.MarketSpecificView) {
             val imageRes = getResourceId(
@@ -20,12 +18,12 @@ class MarketSpecificImageView(context: Context, attrs: AttributeSet?) :
                 0
             )
             if (imageRes > 0) {
-                setImageResource(resolver.provideMarketSpecificRes(imageRes))
+                setImageResource(MarketSpecificUiLib.provideMarketSpecificRes(imageRes))
             }
         }
     }
 
     override fun setImageResource(@DrawableRes resId: Int) {
-        super.setImageResource(resolver.provideMarketSpecificRes(resId))
+        super.setImageResource(MarketSpecificUiLib.provideMarketSpecificRes(resId))
     }
 }

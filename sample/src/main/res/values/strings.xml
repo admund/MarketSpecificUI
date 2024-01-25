@@ -7,4 +7,10 @@
     <string name="title_it">I love to eat PIZZA</string>
     <string name="title_mx">I love to eat TACOS</string>
     <string name="title_pl">I love to eat PIEROGI</string>
+
+    <string name="button">Time for LOVE</string>
+    <string name="button_us">Time for HAMBURGERS</string>
+    <string name="button_it">Time for PIZZA</string>
+    <string name="button_mx">Time for TACOS</string>
+    <string name="button_pl">Time for PIEROGI</string>
 </resources>

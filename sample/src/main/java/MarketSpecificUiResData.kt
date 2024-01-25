@@ -35,6 +35,12 @@ val MarketSpecificUiResData: ResData = mapOf(
 		"mx" to me.admund.marketspecificui.sample.R.string.title_mx,
 		"pl" to me.admund.marketspecificui.sample.R.string.title_pl,
 	),
+	me.admund.marketspecificui.sample.R.string.button to mapOf(
+		"us" to me.admund.marketspecificui.sample.R.string.button_us,
+		"it" to me.admund.marketspecificui.sample.R.string.button_it,
+		"mx" to me.admund.marketspecificui.sample.R.string.button_mx,
+		"pl" to me.admund.marketspecificui.sample.R.string.button_pl,
+	),
 	me.admund.marketspecificui.sample.R.drawable.flag to mapOf(
 		"us" to me.admund.marketspecificui.sample.R.drawable.flag_us,
 		"it" to me.admund.marketspecificui.sample.R.drawable.flag_it,
