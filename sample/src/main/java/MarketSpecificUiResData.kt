@@ -1,6 +1,4 @@
-import me.admund.marketspecificui.ResData
-
-val MarketSpecificUiResData: ResData = mapOf(
+val MarketSpecificUiResData: Map<Int, Map<String, Int>> = mapOf(
 	me.admund.marketspecificui.testandroidmoduleinsideandroidmodule.R.string.test_android_module_inside_android_module_title to mapOf(
 		"us" to me.admund.marketspecificui.testandroidmoduleinsideandroidmodule.R.string.test_android_module_inside_android_module_title_us,
 		"it" to me.admund.marketspecificui.testandroidmoduleinsideandroidmodule.R.string.test_android_module_inside_android_module_title_it,

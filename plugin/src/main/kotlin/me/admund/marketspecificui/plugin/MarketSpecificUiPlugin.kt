@@ -152,8 +152,7 @@ class MarketSpecificUiPlugin : Plugin<Project> {
         result: Map<String, Map<String, String>>
     ) {
         val trimmedProjectName = project.name.trim().replace(" ", "")
-        var resultString = "import me.admund.marketspecificui.ResData\n\n" +
-                "val ${trimmedProjectName}ResData: ResData = mapOf(\n"
+        var resultString = "val ${trimmedProjectName}ResData: Map<Int, Map<String, Int>> = mapOf(\n"
         result.entries.onEach { entry ->
             resultString += "\t${entry.key} to mapOf(\n"
             entry.value.onEach { entry2 ->
