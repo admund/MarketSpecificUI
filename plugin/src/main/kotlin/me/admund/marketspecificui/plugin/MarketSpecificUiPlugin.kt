@@ -2,6 +2,7 @@ package me.admund.marketspecificui.plugin
 
 import groovy.util.Node
 import groovy.xml.XmlParser
+import me.admund.marketspecificui.plugin.usecases.ParsePackageNameUseCase
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.file.ConfigurableFileTree
@@ -15,6 +16,8 @@ interface MarketSpecificUiPluginExtension {
 }
 
 class MarketSpecificUiPlugin : Plugin<Project> {
+
+    private val parsePackageNameUseCase = ParsePackageNameUseCase()
 
     override fun apply(project: Project) {
         val extension = project.extensions.create(
@@ -58,39 +61,42 @@ class MarketSpecificUiPlugin : Plugin<Project> {
         }
 
         // TODO handle Groovy "build.gradle"
-        val buildGradleFile = subProject.file("build.gradle.kts")
-        if (buildGradleFile.exists()) {
-            val packageName = parsePackageName(buildGradleFile)
-            println("Sub project name: ${subProject.name} and package name: $packageName")
+        var buildGradleFile = subProject.file("build.gradle.kts")
+        if (buildGradleFile.exists().not()) {
+            buildGradleFile = subProject.file("build.gradle")
+        }
 
-            // PARSE strings.xml
-            val projectSrcPath = subProject.projectDir.path + "/src"
-            subProject.fileTree(projectSrcPath).matching {
-                this.include(listOf("**/*strings.xml"))
-            }.onEach { file ->
-                val fileResult = parseStringsFile(
+        if (buildGradleFile.exists().not()) {
+            println("gradle.build/kts file not exist in sub project: ${subProject.name}")
+        } else {
+            val packageName = parsePackageNameUseCase(buildGradleFile)
+            if (packageName.isEmpty()) {
+                println("Can't read packageName from sub project: ${subProject.name}")
+            } else {
+                println("Sub project name: ${subProject.name} and package name: $packageName")
+
+                // PARSE strings.xml
+                val projectSrcPath = subProject.projectDir.path + "/src"
+                subProject.fileTree(projectSrcPath).matching {
+                    this.include(listOf("**/*strings.xml"))
+                }.onEach { file ->
+                    val fileResult = parseStringsFile(
+                        packageName = packageName,
+                        stringsFile = file,
+                        suffixList = suffixList
+                    )
+                    result.putAll(fileResult)
+                }
+
+                // PARSE drawable dir
+                val drawableDirResult = parseDrawableDir(
                     packageName = packageName,
-                    stringsFile = file,
+                    drawableDir = subProject.fileTree("src/main/res/drawable"),
                     suffixList = suffixList
                 )
-                result.putAll(fileResult)
+                result.putAll(drawableDirResult)
             }
-
-            // PARSE drawable dir
-            val drawableDirResult = parseDrawableDir(
-                packageName = packageName,
-                drawableDir = subProject.fileTree("src/main/res/drawable"),
-                suffixList = suffixList
-            )
-            result.putAll(drawableDirResult)
         }
-    }
-
-    private fun parsePackageName(projectBuildGradle: File): String {
-        val text = projectBuildGradle.readText()
-        // TODO handle groovy version without "="
-        return "namespace = \"[a-zA-Z.]*".toRegex()
-            .find(text)?.value?.replace("namespace = \"", "") ?: ""
     }
 
     private fun parseStringsFile(
