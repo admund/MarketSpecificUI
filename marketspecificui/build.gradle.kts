@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "me.admund.marketspecificui"
+    namespace = "io.github.admund.marketspecificui"
     compileSdk = 34
 
     defaultConfig {

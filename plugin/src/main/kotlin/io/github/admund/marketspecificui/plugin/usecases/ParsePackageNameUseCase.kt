@@ -1,4 +1,4 @@
-package me.admund.marketspecificui.plugin.usecases
+package io.github.admund.marketspecificui.plugin.usecases
 
 import org.jetbrains.annotations.VisibleForTesting
 import java.io.File

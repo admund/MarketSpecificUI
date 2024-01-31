@@ -1,8 +1,8 @@
-package me.admund.marketspecificui.plugin
+package io.github.admund.marketspecificui.plugin
 
 import groovy.util.Node
 import groovy.xml.XmlParser
-import me.admund.marketspecificui.plugin.usecases.ParsePackageNameUseCase
+import io.github.admund.marketspecificui.plugin.usecases.ParsePackageNameUseCase
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.file.ConfigurableFileTree

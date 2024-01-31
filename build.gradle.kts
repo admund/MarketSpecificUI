@@ -3,11 +3,11 @@ plugins {
     alias(libs.plugins.androidApplication) apply false
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.androidLibrary) apply false
-    id("me.admund.marketspecificui") version ("0.1.2")
+    id("io.github.admund.marketspecificui") version ("0.2.0")
     alias(libs.plugins.org.jetbrains.kotlin.jvm) apply false
 }
 
-configure<me.admund.marketspecificui.plugin.MarketSpecificUiPluginExtension> {
+configure<io.github.admund.marketspecificui.plugin.MarketSpecificUiPluginExtension> {
     suffixList.set(listOf("us", "it", "mx", "pl", "tr"))
     resultResDataClassDestinationPath.set("sample/src/main/java")
 }

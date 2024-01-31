@@ -4,8 +4,8 @@ plugins {
     id("com.gradle.plugin-publish") version "1.2.1"
 }
 
-group = "me.admund"
-version = "0.1.2"
+group = "io.github.admund"
+version = "0.2.0"
 
 gradlePlugin {
     website = "https://github.com/admund/MarketSpecificUI"
@@ -13,11 +13,11 @@ gradlePlugin {
 
     plugins {
         create("MarketSpecificUiPlugin") {
-            id = "me.admund.marketspecificui"
+            id = "io.github.admund.marketspecificui"
             displayName = "MarketSpecificUiPlugin"
             description = "Plugin for creating ResData for MarketSpecificUiLib"
             tags = listOf("")
-            implementationClass = "me.admund.marketspecificui.plugin.MarketSpecificUiPlugin"
+            implementationClass = "io.github.admund.marketspecificui.plugin.MarketSpecificUiPlugin"
         }
     }
 }

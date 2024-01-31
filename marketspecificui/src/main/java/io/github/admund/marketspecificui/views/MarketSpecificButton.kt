@@ -1,12 +1,12 @@
-package me.admund.marketspecificui.views;
+package io.github.admund.marketspecificui.views;
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.withStyledAttributes
-import me.admund.marketspecificui.MarketSpecificUiLib
-import me.admund.marketspecificui.R
+import io.github.admund.marketspecificui.MarketSpecificUiLib
+import io.github.admund.marketspecificui.R
 
 class MarketSpecificButton(context: Context, attrs: AttributeSet?) :
     AppCompatButton(context, attrs) {

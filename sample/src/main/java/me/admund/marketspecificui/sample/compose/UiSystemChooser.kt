@@ -16,7 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import me.admund.marketspecificui.sample.compose.theme.MarketSpecificComponentsTheme
-import me.admund.marketspecificui.MarketSpecificUiLib
+import io.github.admund.marketspecificui.MarketSpecificUiLib
 
 @Composable
 fun UiSystemChooser(

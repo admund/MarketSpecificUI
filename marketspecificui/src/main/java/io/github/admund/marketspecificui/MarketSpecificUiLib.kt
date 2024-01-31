@@ -1,4 +1,4 @@
-package me.admund.marketspecificui
+package io.github.admund.marketspecificui
 
 typealias ResData = Map<Int, Map<String, Int>>
 

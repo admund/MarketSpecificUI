@@ -1,5 +1,6 @@
-package me.admund.marketspecificui.plugin.usecases
+package io.github.admund.marketspecificui.plugin
 
+import io.github.admund.marketspecificui.plugin.usecases.ParsePackageNameUseCase
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
