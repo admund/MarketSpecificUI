@@ -60,14 +60,9 @@ class MarketSpecificUiPlugin : Plugin<Project> {
             )
         }
 
-        // TODO handle Groovy "build.gradle"
-        var buildGradleFile = subProject.file("build.gradle.kts")
-        if (buildGradleFile.exists().not()) {
-            buildGradleFile = subProject.file("build.gradle")
-        }
-
-        if (buildGradleFile.exists().not()) {
-            println("gradle.build/kts file not exist in sub project: ${subProject.name}")
+        val buildGradleFile = findBuildGradleFile(subProject)
+        if (buildGradleFile == null) {
+            println("Can't find gradle.build/kts in sub project: ${subProject.name}")
         } else {
             val packageName = parsePackageNameUseCase(buildGradleFile)
             if (packageName.isEmpty()) {
@@ -97,6 +92,17 @@ class MarketSpecificUiPlugin : Plugin<Project> {
                 result.putAll(drawableDirResult)
             }
         }
+    }
+
+    private fun findBuildGradleFile(project: Project): File? {
+        var buildGradleFile = project.file("build.gradle.kts")
+        if (buildGradleFile.exists().not()) {
+            buildGradleFile = project.file("build.gradle")
+            if (buildGradleFile.exists().not()) {
+                return null
+            }
+        }
+        return buildGradleFile
     }
 
     private fun parseStringsFile(
