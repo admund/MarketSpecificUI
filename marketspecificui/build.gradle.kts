@@ -45,11 +45,8 @@ dependencies {
     implementation(libs.material)
 
     implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
     implementation(libs.ui)
     implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.material3)
 
     testImplementation(libs.junit)
 
