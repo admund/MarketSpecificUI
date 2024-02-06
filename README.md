@@ -1,5 +1,5 @@
 # Market-specific UI
-Gradle plugin and Android library for market-specific resources for Android apps.
+Gradle plugin and Android library for market-specific resources for Android apps in runtime.
 
 ## Plugin
 
@@ -106,6 +106,11 @@ Or you can use `object MarketSpecificUiLib` directly, for eg in you custom views
 ```
 val defualtResId = R.string.some_res
 val specificResId = MarketSpecificUiLib.provideMarketSpecificRes(defualtResId)
+```
+
+Each time you are changing market, you just need to invoke:
+```
+MarketSpecificUiLib.setMarketSuffix(newMarketSuffix)
 ```
 
 ## Read More
