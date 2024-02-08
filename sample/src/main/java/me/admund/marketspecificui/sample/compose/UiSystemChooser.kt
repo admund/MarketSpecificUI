@@ -29,39 +29,49 @@ fun UiSystemChooser(
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         var marketSuffix by rememberSaveable { mutableStateOf("default") }
-        Text(text = "Market: $marketSuffix")
-        Button(
-            onClick = {
-                marketSuffix = "us"
-                changeMarket("us")
-            }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Text(text = "USA")
-        }
-        Button(
-            onClick = {
-                marketSuffix = "it"
-                changeMarket("it")
+            Button(
+                onClick = {
+                    marketSuffix = "us"
+                    changeMarket("us")
+                }
+            ) {
+                Text(text = "USA")
             }
-        ) {
-            Text(text = "ITALY")
-        }
-        Button(
-            onClick = {
-                marketSuffix = "mx"
-                changeMarket("mx")
+            Button(
+                onClick = {
+                    marketSuffix = "it"
+                    changeMarket("it")
+                }
+            ) {
+                Text(text = "ITALY")
             }
-        ) {
-            Text(text = "MEXICO")
         }
-        Button(
-            onClick = {
-                marketSuffix = "pl"
-                changeMarket("pl")
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(
+                onClick = {
+                    marketSuffix = "mx"
+                    changeMarket("mx")
+                }
+            ) {
+                Text(text = "MEXICO")
             }
-        ) {
-            Text(text = "POLAND")
+            Button(
+                onClick = {
+                    marketSuffix = "pl"
+                    changeMarket("pl")
+                }
+            ) {
+                Text(text = "POLAND")
+            }
         }
+        Text(text = "Current market: $marketSuffix")
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
