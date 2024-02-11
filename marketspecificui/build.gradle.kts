@@ -58,7 +58,7 @@ mavenPublishing {
     signAllPublications()
 
 //    coordinates("io.github.admund", "marketspecificui", "0.1.0-SNAPSHOT")
-    coordinates("io.github.admund", "marketspecificui", "0.1.0")
+    coordinates("io.github.admund", "marketspecificui", "0.2.0")
 
     pom {
         name.set("MarketSpecificUI")
